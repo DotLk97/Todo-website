@@ -18,7 +18,7 @@
           <form action="/api/edit/{{this.id}}" method="GET" class="A">
             <input type="Submit" name="Add todo" class="inline edit but" value="edit">
           </form>
-          <form action="/api/delete/{{this.id}}" method="GET" class="A">
+          <form action="/api/delete/{{this.id}}" method="POST" class="A">
             <input type="Submit" name="{{this.name}}" class="inline delete but" value="delete">
           </form>
         </li>
