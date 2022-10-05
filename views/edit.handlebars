@@ -1,0 +1,71 @@
+<div class="border">
+  <h1 class="basic h1">Todo List</h1>
+  <form action="api/todos" method="POST" class="A">
+    <div class="form-group">
+      <input type="text" name="name" class="submit basic inp">
+    </div>
+    <input type="Submit" name="Add todo" class="submit-b  basic but" value="Add Todo">
+  </form>
+  <h2 class="basic">Todos</h2>
+  <ul class="list-group">
+    {{#each todos}}
+      {{#if this.complete}}
+        {{#if this.edit}}
+          <li class="inline-a">
+            <form action="/api/complete/{{this.id}}" method="GET" class="A">
+              <input type="Submit" name="Add todo" class="inline complete but" value="Completed">
+            </form>
+            <form action="/api/edit/{{this.id}}" method="POST" class="A">
+              <div class="">
+              <input type="text" name="name" class="text-m">
+              </div>
+              <input type="Submit" name="Add todo" class="inline submit-but but" value="Submit">
+            </form>
+          </li>
+        {{else}}
+          <li class="inline-a">
+            <form action="/api/complete/{{this.id}}" method="GET" class="A">
+              <input type="Submit" name="Add todo" class="inline complete but" value="Completed">
+            </form>
+            <div class="cross text-m">{{this.name}}</div>
+            <form action="/api/edit/{{this.edit}}" method="GET" class="A">
+              <input type="Submit" name="Add todo" class="inline edit but" value="edit">
+            </form>
+            <form action="/api/delete/{{this.id}}" method="GET" class="A">
+              <input type="Submit" name="{{this.name}}" class="inline delete but" value="delete">
+            </form>
+          </li>
+        {{/if}}
+      {{else}}
+        {{#if this.edit}}
+          <li class="inline-a">
+            <form action="/api/complete/{{this.id}}" method="GET" class="A">
+              <input type="Submit" name="Add todo" class="inline complete but" value="Complete">
+            </form>
+            
+            <form action="/api/edit/{{this.id}}" method="POST" class="A">
+              <div class="">
+              <input type="text" name="name" class="text-m">
+              </div>
+              <input type="Submit" name="Add todo" class="inline submit-but but" value="Submit">
+            </form>
+          </li>
+        {{else}}
+          <li class="inline-a">
+            <form action="/api/complete/{{this.id}}" method="GET" class="A">
+              <input type="Submit" name="Add todo" class="inline complete but" value="Complete">
+            </form>
+            <div class="inline text-m">{{this.name}}</div>
+            <form action="/api/edit/{{this.edit}}" method="GET" class="A">
+              <input type="Submit" name="Add todo" class="inline edit but" value="edit">
+            </form>
+            <form action="/api/delete/{{this.id}}" method="GET" class="A">
+              <input type="Submit" name="{{this.name}}" class="inline delete but" value="delete">
+            </form>
+          </li>
+        {{/if}}
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>
+
